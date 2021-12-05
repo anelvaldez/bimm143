@@ -1,0 +1,55 @@
+---
+title: "class16"
+author: "Anel A15426506"
+date: "11/18/2021"
+output: html_document
+---
+
+```{r}
+library(DESeq2)
+```
+
+```{r}
+#countData <- as.matrix(countData[,1:2])
+head(countData)
+```
+```{r}
+#countData <- countData[,-1]
+head(countData)
+```
+
+
+```{r}
+metaFile <- "GSE37704_metadata.csv"
+countFile <- "GSE37704_featurecounts.csv"
+```
+
+
+```{r}
+dds = DESeqDataSetFromMatrix(countData=countData,
+                             colData=colData,
+                             design=~condition)
+dds = DESeq(dds)
+```
+
+
+```{r}
+colData = read.csv(metaFile, row.names=1)
+head(colData)
+```
+Get our results
+
+```{r}
+#res <- results(dds)
+#head(res)
+```
+
+
+
+```{r}
+library("AnnotationDbi")
+library("org.Hs.eg.db")
+
+```
+
+
